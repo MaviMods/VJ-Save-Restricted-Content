@@ -63,7 +63,7 @@ def progress(current, total, message, type):
 
 # start command
 @bot.on_message(filters.command(["help"]))
-def send_start(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
+def send_help(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
 	bot.send_message(message.chat.id, f"{USAGE}",
 	reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("Update Channel", url="https://t.me/MODSMAVI"), InlineKeyboardButton("Support Group", url="https://t.me/mavibot_support")]]), reply_to_message_id=message.id)
 
@@ -90,9 +90,9 @@ def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_me
 				bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)
 				return
 			bot.send_message(message.chat.id,"**Chat Joined**", reply_to_message_id=message.id)
-		        except UserAlreadyParticipant:
+		except UserAlreadyParticipant as:
 			bot.send_message(message.chat.id,"**Chat alredy Joined**", reply_to_message_id=message.id)
-		        except InviteHashExpired:
+		except InviteHashExpired as:
 			bot.send_message(message.chat.id,"**Invalid Link**", reply_to_message_id=message.id)
 
 	# getting message
@@ -115,8 +115,8 @@ def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_me
 					return
 				
 				handle_private(message,chatid,msgid)
-				try: handle_private(message,chatid,msgid)
-				except Exception as e: bot.send_message(message.chat.id,f"**Error** : Send invite to bot first then send message link🙂", reply_to_message_id=message.id)
+				#try: handle_private(message,chatid,msgid)
+				#except Exception as e: bot.send_message(message.chat.id,f"**Error** : Send invite to bot first then send message link🙂", reply_to_message_id=message.id)
 			
 			# bot
 			elif "https://t.me/b/" in message.text:
