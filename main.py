@@ -64,7 +64,7 @@ def progress(current, total, message, type):
 # start command
 @bot.on_message(filters.command(["help"]))
 def send_start(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-	bot.send_message(message.chat.id, f"{"USAGE}",
+	bot.send_message(message.chat.id, f"{USAGE}",
 	reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("Update Channel", url="https://t.me/MODSMAVI")],[ InlineKeyboardButton("Support Group", url="https://t.me/mavibot_support")]]), reply_to_message_id=message.id)
 
 @bot.on_message(filters.command(["start"]))
