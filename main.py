@@ -115,8 +115,8 @@ def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_me
 					return
 				
 				handle_private(message,chatid,msgid)
-				# try: handle_private(message,chatid,msgid)
-				# except Exception as e: bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)
+				try: handle_private(message,chatid,msgid)
+				except Exception as e: bot.send_message(message.chat.id,f"**Error** : Send invite to bot first then send message link🙂", reply_to_message_id=message.id)
 			
 			# bot
 			elif "https://t.me/b/" in message.text:
